@@ -1,9 +1,12 @@
 //https://github.com/kittykatattack/learningPixi
 
 function  startLoading() {
-    PIXI.loader
-        .add("images/anyImage.png")
-        .load(setup);
+    loadContainer();
+    loadAssets();
+}
+
+function onAssetsLoaded(){
+
 }
 
 function  loadContainer() {
