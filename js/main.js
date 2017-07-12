@@ -1,6 +1,6 @@
 //https://github.com/kittykatattack/learningPixi
 
-function  startLoading() {
+/*function  startLoading() {
     loadContainer();
     loadAssets();
 }
@@ -35,4 +35,36 @@ function  loadContainer() {
 
     //Tell the `renderer` to `render` the `stage`
     renderer.render(stage);
-}
+}*/
+
+!function($w) {
+    var config;
+    var renderer;
+    var rootStage;
+    function setup(_config) {
+        config = _config;
+        renderer = new PIXI.autoDetectRenderer(config.resolution.width, config.resolution.height);
+        renderer.backgroundColor = config.backgroundColor;
+
+        $w.document.body.appendChild(renderer.view);
+
+        rootStage = new PIXI.Container();
+
+        build();
+
+        return render;
+    }
+
+    function build() {
+        var caption = new PIXI.Text('Welcome to Pixi',{'font':'20px sans-serif', 'fill':0x009900});
+        caption.position.set(config.resolution.width - config.resolution.width/2,100);
+        rootStage.addChild(caption);
+    }
+
+    function render() {
+        renderer.render(rootStage);
+        requestAnimationFrame(render);
+    }
+
+    $w.setup = setup;
+}(this);
